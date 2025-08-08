@@ -9,6 +9,7 @@ import UIKit
 import Then
 import SnapKit
 import ReactorKit
+import RxCocoa
 
 class SearchViewController: UIViewController, StoryboardView {
     var disposeBag = DisposeBag()
@@ -17,7 +18,11 @@ class SearchViewController: UIViewController, StoryboardView {
     private let tableView = UITableView()
     
     func bind(reactor: SearchViewReactor) {
-        
+        searchBar.rx.text.subscribe(
+            onNext: { string in
+                print(string)
+            }
+        ).disposed(by: disposeBag)
     }
     
     override func viewDidLoad() {
