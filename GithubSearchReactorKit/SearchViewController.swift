@@ -8,10 +8,17 @@
 import UIKit
 import Then
 import SnapKit
+import ReactorKit
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController, StoryboardView {
+    var disposeBag = DisposeBag()
+    
     private let searchBar = UISearchBar()
     private let tableView = UITableView()
+    
+    func bind(reactor: SearchViewReactor) {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
