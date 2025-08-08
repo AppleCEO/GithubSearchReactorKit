@@ -6,14 +6,29 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
 class ViewController: UIViewController {
-
+    private let searchBar = UISearchBar()
+    private let tableView = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        configureUI()
     }
 
-
+    private func configureUI() {
+        [searchBar, tableView].forEach {
+            view.addSubview($0)
+        }
+        searchBar.snp.makeConstraints { make in
+            make.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
+        }
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
 }
 
