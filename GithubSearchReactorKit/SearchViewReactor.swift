@@ -9,6 +9,8 @@ import ReactorKit
 import RxSwift
 
 final class SearchViewReactor: Reactor {
+    private let networkService = NetworkService()
+    
     enum Action {
         case search(String)
         case reload
