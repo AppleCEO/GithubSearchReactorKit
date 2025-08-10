@@ -17,7 +17,10 @@ class NetworkService {
                     observer.onError(error)
                     return
                 }
-                if let data = data, let searchResponse = try? JSONDecoder().decode(SearchResponse.self, from: data) {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601 // 날짜 형식 설정
+                
+                if let data = data, let searchResponse = try? decoder.decode(SearchResponse.self, from: data) {
                     observer.onNext(searchResponse)
                     observer.onCompleted()
                 }
